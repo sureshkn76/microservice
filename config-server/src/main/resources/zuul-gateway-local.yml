@@ -1,0 +1,9 @@
+zuul:
+  addProxyHeaders: false
+  ignoreSecurityHeaders: false
+  sensitiveHeaders:
+  routes:
+    first-api:
+      path: /api/**
+      url: http://localhost:8000/
+      stripPrefix: false
