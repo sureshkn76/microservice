@@ -1,6 +1,5 @@
 spring:
   data:
     mongodb:
-#       uri: mongodb://localhost:27017/
-       uri: mongodb+srv://mongodbuser:mongodbuser123@cluster0.2llbpgc.mongodb.net/?retryWrites=true&w=majority
+       uri: mongodb://localhost:27017/
        database: mypocdb
