@@ -1,0 +1,12 @@
+This API/Zuul Gatewy is implemented with centralized authentication and authorization instead of doing authentication in each microservices
+All microservices connect to each other via Zuul gateway service. Hence Zuul will validate the token before calling the target microservice
+
+To Enable JWT Token authentication 
+----------------------------------
+1) Add necessary dependencies (spring-boot-starter-security and jwtt) in pom.xml 
+2) Created SecurityConfig file and configured our userDetail service, made it as stateless and added custom filter jwtFilter
+3) Custom filter JwtFilter will be executed for each incoming request since it extends OncePerRequestFilter
+   a) It extracts the Authorization header from http header and extracts the username and token to validate
+   b) It uses JwtUtil to validate the token or create a new token If the token is not available
+4) JwtUtil will make use of Jwts to create and validate the token
+5) This code uses hardcoded list of users to validate the user instead of connecting to h2 database

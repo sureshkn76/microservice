@@ -1,8 +1,12 @@
 package com.poc;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+
+import com.poc.domain.Student;
+import com.poc.domain.StudentDataBase;
 
 public class Reduce {
 
@@ -21,6 +25,13 @@ public class Reduce {
 		concatAllString(words);
 		simpleCount();
 		minMaxValue();
+		findMaxNotes(StudentDataBase.getAllStudents());
+	}
+
+	public static void findMaxNotes(List<Student> list) {
+		Optional<Student> output = list.stream().reduce((s1,s2) -> s1.getNoteBooks() > s2.getNoteBooks() ? s1 : s2);
+		System.out.print("*** Find Student with MaxNoteBooks -> " +output.get());
+
 	}
 
 	public static void concatAllString(List<String> words) {
