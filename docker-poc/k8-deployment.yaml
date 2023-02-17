@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: docker-poc-deploy
+spec:
+  selector:
+    matchLabels:
+      app: docker-poc
+  replicas: 2 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: docker-poc
+    spec:
+      containers:
+        - name: docker-poc
+          image: sureshkn76/docker-poc:1.0 
+          imagePullPolicy: IfNotPresent   # Image that will be used to containers in the cluster
+          ports:
+            - containerPort: 9090   # The port that the container is running on in the cluster
+---
+
+apiVersion: v1      # Kubernetes API version
+kind: Service       # Kubernetes resource kind we are creating
+metadata:           # Metadata of the resource kind we are creating
+  name: docker-poc-svc
+spec:
+  selector:
+    app: docker-poc
+  ports:
+    - protocol: "TCP"
+      port: 9090            # The port that the service is running on in the cluster
+      targetPort: 9090      # The port exposed by the service
+  type: LoadBalancer        # type of the service.
+  
