@@ -1,0 +1,6 @@
+To access Swagger-UI automatically without any configuration, use springdoc-openapi-webflux-ui with version 1.6.14
+Swagger URL -> http://localhost:8107/swagger-ui.html
+
+
+Reference: https://www.youtube.com/watch?v=O26jhgk682Q&t=9199s&ab_channel=DailyCodeBuffer
+https://www.youtube.com/watch?v=pSk9oQ6VwMc&list=PLnXn1AViWyL70R5GuXt_nIDZytYBnvBdd&index=13&ab_channel=CodeWithDilip

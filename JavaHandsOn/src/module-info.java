@@ -6,4 +6,5 @@
  *
  */
 module JavaHandsOn {
+	requires java.base;
 }
