@@ -1,13 +1,25 @@
 Reference: https://cloudkatha.com/aws-lambda-with-java-a-step-by-step-tutorial/
-1) Creating Custom Lambda Handler class with handleRequest() method. This code follow this approach
+1)Creating Custom Lambda Handler class with handleRequest() method. This code follow this approach
 HandlerInfo to mention in AWS -> com.poc.aws.lambda.MyLambdaHandlerClass::handleRequest
 
-2) Implementing RequestHandler interface
+2)Implementing RequestHandler interface
 HandlerInfo to mention in AWS -> com.poc.aws.lambda.LambdaRequestHandlerImpl::handleRequest
 
 https://www.javacodegeeks.com/2020/03/how-to-create-aws-lambda-function-with-java.html
-3) Implementing RequestStreamHandler interface
+3)Implementing RequestStreamHandler interface
 HandlerInfo to mention in AWS -> com.poc.aws.lambda.LambdaRequestStreamHandler::handleRequest
+Use the below input for the lambda function Test	
+{
+	"id": 1,
+	"name": "Suresh",
+	"department": "IT",
+	"role": "SpringBoot"
+}	
+
+In AWS, create a API Gateway, select REST API -> Build -> Create new API -> Give API Name and then click Create API -> 
+In the Actions button select Create Resource. Then select create Method from Actions button. Type as POST. 
+Integration Type as Lambda Function -> In the place of Lambda Function give your lambda function name.
+
 
 Demo with all input types for handler. Need to include aws-lambda-java-events to use the aws events as input for lambda
 https://www.youtube.com/watch?v=0sgXYYJoVrA&t=10s&ab_channel=AjayWadhara   
