@@ -1,0 +1,15 @@
+Reference: https://codetinkering.com/spring-cloud-function-aws-lambda/
+https://blogs.perficient.com/2022/11/15/spring-cloud-function-with-aws-lambda/
+https://www.youtube.com/watch?v=kPjdQJNJVOk&ab_channel=ProgrammingwithMir
+https://www.youtube.com/watch?v=N-ejay6w2As&ab_channel=AjayWadhara
+
+Demo with all input types for handler. Need to include aws-lambda-java-events to use the aws events as input for lambda
+https://www.youtube.com/watch?v=0sgXYYJoVrA&t=10s&ab_channel=AjayWadhara   
+
+How to Create an API in AWS | API Gateway | Lambda | DynamoDB | Java
+https://www.youtube.com/watch?v=kPjdQJNJVOk&ab_channel=ProgrammingwithMir
+
+AWS needs to understand how to properly invoke our Spring Cloud Function. Spring has a class called FunctionInvoker 
+and a generic handler method called handleRequest which is provided by the spring-cloud-function-aws-adapter library.
+
+HandlerInfo to mention in AWS -> org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
