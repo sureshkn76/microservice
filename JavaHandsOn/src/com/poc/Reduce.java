@@ -1,9 +1,9 @@
 package com.poc;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.poc.domain.Student;
 import com.poc.domain.StudentDataBase;
@@ -42,6 +42,7 @@ public class Reduce {
 
 		// Displaying the longest String
 		concatString.ifPresent(System.out::print);
+		
 	}
 
 	public static void longestString(List<String> strList) {

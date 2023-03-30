@@ -48,7 +48,6 @@ public class JavaFunctionalInterface {
 //		for(int i : output2) {System.out.println(" int value -> "+i); }
 		List<Student> emp = StudentDataBase.getAllStudents();
 //		for(Student student : emp) {System.out.println(" emp value -> "+student); }
-
 		ConvertToListAndSet(students);
 
 		stringReversal("This is my test program for java");
