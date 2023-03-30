@@ -1,0 +1,35 @@
+How to create ECS-Fargate-Service
+*********************************
+Reference: https://www.youtube.com/watch?v=o7s-eigrMAI&ab_channel=BeABetterDev
+
+1)Create an ECS Cluster with the availability zones we want to use
+
+2)Create Two Security Group 
+  a)One for Application Loadbalancer(ALB) for ECS Fargate service  (For ex: name it as DemoEcsLB-SG). 
+  Application loadbalancer is exposed on port 80
+    	Add inbound rule for HTTP - TCP - 80 - Anywhere IPv4
+		Add inbound rule for HTTP - TCP - 80 - Anywhere IPv6 
+  b)One for ECS Fargate Service (This will be using the ALB SG which is created in step 2a
+		Add inbound rule for All TCP - TCP - range - DemoEcsLB-SG (ALB SG which is created in step 2a)
+
+3)Create an ALB for ECS Fargate service
+  a)With internet-facing, ip address type, with security group as DemoEcsLB-SG
+  b)Listener port as Http 80, Target Type as "IP Address" (NOT Instances)
+  c)Target protocol (routing protocol) to HTTP and Target Port to 8080 (depends on the port no. on which our app is running)
+  Ex: if our springboot app is running on 8090, we should configure the target port as 8090
+
+4)Create an Task Definition in ECS
+  a)Provide docker image URI of your application, port no. of the docker container 8080, protocol as TCP
+  b)select the CPU, Memory based on your need
+  c)Use default role if the task doesn't connect to any other services. otherwise need to create new role with required permission
+
+5)Create an ECS Fargate Service
+  a)Go to cluster and create new Service
+  b)Application type as Service, No. of desired tasks based on your need, in networking 
+  c)Select SG as the one created in step 2b and enable public IP 
+  d)Select Application loadbalancer as step3. Create listener as Http port 80 and Target group as the one we created in step2
+
+6)To test the service, you need to use the DNS name URL from ALB (Created in step3)
+No need to use the port while using the ALB DNS URL since we are hitting ALB URL
+ex app url:  http://demoecsalb-171748391.us-east-1.elb.amazonaws.com/message
+where http://demoecsalb-171748391.us-east-1.elb.amazonaws.com is ALB DNS URL
