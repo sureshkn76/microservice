@@ -33,3 +33,16 @@ Reference: https://www.youtube.com/watch?v=o7s-eigrMAI&ab_channel=BeABetterDev
 No need to use the port while using the ALB DNS URL since we are hitting ALB URL
 ex app url:  http://demoecsalb-171748391.us-east-1.elb.amazonaws.com/message
 where http://demoecsalb-171748391.us-east-1.elb.amazonaws.com is ALB DNS URL
+
+How to create ECS-Fargate-Task
+******************************
+Reference: https://www.youtube.com/watch?v=z7_LdCVnCRU&ab_channel=JavaTechie
+1)Created an Task Definition with docker image and port mapping as 8080 TCP as well as 80 TCP (however 80 was not working while testing)
+2)Created an SG for the above task with inbound rule as All TCP with Anywhere Ipv4 and Ipv6
+3)Go to cluster -> Run new Task -> 
+a)Select Application Type as Task, Specify the task definition created in step1
+b)Configure required resources and no. of tasks
+c)Configure the existing security group which is created in step2 
+4)To test the task, get the public IP configuration and add the port and url of your service to test
+ex: 35.153.182.218:8080/message
+
